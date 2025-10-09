@@ -1,1 +1,2 @@
-old feature on main branch
+New feature added in feature-update branch
+New feature added in feature-update branch
