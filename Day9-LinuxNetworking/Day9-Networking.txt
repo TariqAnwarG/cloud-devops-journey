@@ -1,0 +1,190 @@
+📄 `Day9-LinuxNetworking/challenge.md`
+
+---
+
+# 🌐 Day 9 Challenge – Linux Networking & Connectivity
+
+## 🎯 **Objective**
+
+Understand and practice essential Linux networking commands to monitor, troubleshoot, and manage network connections.
+These are key for **Cloud Engineers, DevOps Engineers, and IT Administrators**.
+
+---
+
+## 📘 **Step 1: View Network Configuration**
+
+### Show all network interfaces and IP addresses:
+
+```bash
+ip addr show
+```
+
+or (legacy command)
+
+```bash
+ifconfig
+```
+
+✅ **Example Output:**
+
+```
+2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500
+    inet 192.168.1.10/24 brd 192.168.1.255 scope global eth0
+```
+
+---
+
+## 📘 **Step 2: Display Hostname and Network Info**
+
+```bash
+hostname
+hostnamectl
+```
+
+✅ `hostnamectl` provides OS name, kernel version, and network hostname.
+
+---
+
+## 📘 **Step 3: Test Connectivity**
+
+### 1️⃣ Ping a website:
+
+```bash
+ping -c 4 google.com
+```
+
+### 2️⃣ Test local connectivity:
+
+```bash
+ping -c 4 127.0.0.1
+```
+
+✅ `-c 4` sends 4 packets only.
+
+---
+
+## 📘 **Step 4: Trace the Route to a Server**
+
+```bash
+traceroute google.com
+```
+
+> 💡 If command not found, install it:
+
+```bash
+sudo apt install traceroute -y
+```
+
+---
+
+## 📘 **Step 5: Check Active Network Connections**
+
+### Using `netstat`:
+
+```bash
+netstat -tuln
+```
+
+### Using `ss` (modern tool):
+
+```bash
+ss -tuln
+```
+
+✅ Shows all listening ports and active network connections.
+
+---
+
+## 📘 **Step 6: Test DNS Resolution**
+
+```bash
+nslookup google.com
+```
+
+or
+
+```bash
+dig google.com
+```
+
+✅ Displays IP address and DNS server used.
+
+---
+
+## 📘 **Step 7: Remote Access and File Transfer**
+
+### Connect to a remote server:
+
+```bash
+ssh user@remote-ip
+```
+
+### Copy a file to a remote system:
+
+```bash
+scp file.txt user@remote-ip:/home/user/
+```
+
+✅ Useful for remote configuration and server management.
+
+---
+
+## 📘 **Step 8: View Routing Table**
+
+```bash
+route -n
+```
+
+or
+
+```bash
+ip route show
+```
+
+✅ Displays default gateway and routing paths.
+
+---
+
+## 🧠 **Bonus Task – Network Diagnostic Script**
+
+Create a simple shell script to automate network checks:
+
+```bash
+echo "echo '--- Network Diagnostic ---'
+hostname
+ip addr show
+ping -c 2 google.com
+netstat -tuln" > network_check.sh
+
+chmod +x network_check.sh
+./network_check.sh
+```
+
+✅ **Output Includes:**
+
+* Hostname
+* IP address info
+* Ping results
+* Open ports
+
+---
+
+## ✅ **Day 9 Summary**
+
+By completing this challenge, you’ve learned to:
+
+* Inspect and manage network interfaces
+* Test connectivity using `ping` and `traceroute`
+* Analyze ports with `netstat` or `ss`
+* Use `ssh` and `scp` for remote server management
+* Automate network diagnostics with scripts
+
+---
+
+## 🔜 **Next Step (Day 10 – Linux System Monitoring & Processes)**
+
+Tomorrow, you’ll learn how to:
+
+* Monitor CPU, RAM, and disk usage
+* Manage processes with `ps`, `kill`, and `nice`
+* Use `top`, `htop`, and `df` to optimize performance
